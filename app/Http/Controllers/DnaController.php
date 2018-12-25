@@ -4,19 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
+/**
+ * Controller class for the Dna Module
+ */
 class DnaController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
     
+    /**
+     * Function to control /mutant request
+     * 
+     * @return Illuminate\Http\Response|Laravel\Lumen\Http\ResponseFactory
+     */
     public function store(Request $request) 
     {
         $this->validate($request, [
@@ -33,13 +31,82 @@ class DnaController extends Controller
             ]
         ]);
 
+        $isMutant = $this->isMutant($request->get('dna'));
+
+        return response('', $isMutant ? 200 : 403);
     }
 
-    private function isDna(Array $dna) : boolean
+    /**
+     * Check if is mutant with based on given dna
+     *
+     * @param Array $dna
+     * @return boolean
+     */
+    private function isMutant(Array $dna) : bool
     {
+        $mutantsSequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG'];
+        
+        $sequences = [];
 
+        $count = 0;
+        
+        $rows = array_map(function($row) {
+            return str_split($row);
+        }, $dna);
+        
+        $totalRows = count($rows);
+        
+        foreach($rows as $rowNum => $row) {
+        
+            $totalLetters = count($row);
+        
+            for($i=0; $i < $totalLetters; $i++) {
+        
+                $horizontalIndex = $obliqueIndexNext = $obliqueIndexPrev = $i; 
+                $verticalIndex = $rowNum;
+        
+                $max = $horizontalIndex + 4;
+                
+                $horizontalWord = $verticalWord = $obliqueWordNext = $obliqueWordPrev = '';
+        
+                while($horizontalIndex < $max) {
+                    $horizontalWord .= isset($row[$horizontalIndex]) ? $row[$horizontalIndex] : '-';
+                    
+                    $verticalWord   .= isset($rows[$verticalIndex][$i]) ? $rows[$verticalIndex][$i] : '-';
+                    
+                    $obliqueWordNext  .= isset($rows[$verticalIndex][$obliqueIndexNext]) ? $rows[$verticalIndex][$obliqueIndexNext] : '-';
+                    
+                    $obliqueWordPrev  .= isset($rows[$verticalIndex][$obliqueIndexPrev]) ? $rows[$verticalIndex][$obliqueIndexPrev] : '-';
+        
+                    $horizontalIndex++;
+                    $verticalIndex++;
+                    $obliqueIndexNext++;
+                    $obliqueIndexPrev--;
+                }
+        
+                $sequences[] = $horizontalWord;
+                $sequences[] = $verticalWord;
+                $sequences[] = $obliqueWordNext;
+                $sequences[] = $obliqueWordPrev;
+            }
+        
+        }
+                
+        foreach($sequences as $sequence) {
+            if (in_array($sequence, $mutantsSequences)) {
+                $count++;
+            }
+        }
+        
+        return $count > 1;
     }
 
+    /**
+     * Custom validation to dna rules format
+     *
+     * @param [type] $value
+     * @return Array
+     */
     private function validateDnaFormat($value) : Array
     {
         $errors = [];

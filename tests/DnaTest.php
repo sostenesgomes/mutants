@@ -67,4 +67,28 @@ class DnaTest extends TestCase
             ->assertContains("The dna must be an array that contain just letters (A, T, C, G).", json_decode($this->response->getContent(), true)['dna']);
     }
 
+    /**
+     * Test if given dna is mutant
+     *
+     * @return void
+     */
+    public function testIsMutantTrue()
+    {
+        $this->json('POST', '/mutant', ['dna' => ["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]])
+            ->seeStatusCode(200)
+            ->assertEmpty($this->response->getContent());
+    }
+
+    /**
+     * Test if given dna is not mutant
+     *
+     * @return void
+     */
+    public function testIsMutantFalse()
+    {
+        $this->json('POST', '/mutant', ['dna' => ["ATGCGA","CAGTGC","TTATTT","AGACGG","GCGTCA","TCACTG"]])
+            ->seeStatusCode(403)
+            ->assertEmpty($this->response->getContent());
+    }
+
 }
