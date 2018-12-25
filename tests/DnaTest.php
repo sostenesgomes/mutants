@@ -107,6 +107,21 @@ class DnaTest extends TestCase
     }
 
     /**
+     * Tests the /stats service
+     *
+     * @return void
+     */
+    public function testStats()
+    {
+        $this->json('GET', '/stats')
+            ->seeJsonStructure([
+                'count_mutant_dna',
+                'count_human_dna',
+                'ratio'
+            ]);
+    }
+
+    /**
      * Build a random Dna Sequence for tests
      *
      * @return void

@@ -16,3 +16,5 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/mutant', 'DnaController@store');
+
+$router->get('/stats', 'DnaController@stats');

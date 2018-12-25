@@ -148,4 +148,36 @@ class DnaController extends Controller
         return $errors;
     }
 
+    /**
+     * Return statics about the dna module
+     *
+     * @return void
+     */
+    public function stats()
+    {
+        $countMutants = $countHumans = $ratio = 0; 
+        
+        $result = Dna::selectRaw('is_mutant, count(is_mutant) as total')->groupBy('is_mutant')->get();
+
+        if ($result) {
+            foreach ($result as $item) {
+                
+                if ($item->is_mutant) {
+                    $countMutants = $item->total;
+                } else {
+                    $countHumans = $item->total;
+                }
+                
+            }
+        }
+        
+        $data = [
+            'count_mutant_dna' => $countMutants,
+            'count_human_dna' => $countHumans,
+            'ratio' => ($countHumans > 0) ? $countMutants / $countHumans : 0
+        ];
+
+        return response()->json($data);
+    }
+
 }
