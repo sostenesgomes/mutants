@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dna;
 
 /**
  * Controller class for the Dna Module
@@ -30,8 +31,15 @@ class DnaController extends Controller
                 }
             ]
         ]);
+        
+        $dna = $request->get('dna');
 
-        $isMutant = $this->isMutant($request->get('dna'));
+        $isMutant = $this->isMutant($dna);
+        
+        Dna::create([
+            'dna' => json_encode($dna),
+            'is_mutant' => $isMutant
+        ]);
 
         return response('', $isMutant ? 200 : 403);
     }

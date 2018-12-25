@@ -91,4 +91,44 @@ class DnaTest extends TestCase
             ->assertEmpty($this->response->getContent());
     }
 
+    /**
+     * Test if dna is stored in database
+     *
+     * @return void
+     */
+    public function testDnaDatabase()
+    {
+        $dna = $this->buildRandomDnaSequence();
+        
+        $this->json('POST', '/mutant', ['dna' => $dna])
+            ->seeInDatabase('dnas', [
+                'dna' => json_encode($dna)
+            ]);
+    }
+
+    /**
+     * Build a random Dna Sequence for tests
+     *
+     * @return void
+     */
+    private function buildRandomDnaSequence() : Array
+    {
+        $dna = [];
+        
+        $letters = ['A', 'T', 'C', 'G'];
+
+        for($i=0; $i < 6; $i++) {
+            
+            $sequence = '';
+
+            for ($j=0; $j < 6; $j++) {
+                $sequence .= $letters[rand(0, 3)];
+            }
+
+            $dna[$i] = $sequence;
+        }
+
+        return $dna;
+    }
+
 }
