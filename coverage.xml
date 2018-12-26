@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1545789097">
-  <project timestamp="1545789097">
+<coverage generated="1545790046">
+  <project timestamp="1545790046">
     <package name="App\Console">
       <file name="/home/sostenes/mutants/app/Console/Kernel.php">
         <class name="App\Console\Kernel" namespace="App\Console">
@@ -17,14 +17,6 @@
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-      <file name="/home/sostenes/mutants/app/Events/ExampleEvent.php">
-        <class name="App\Events\ExampleEvent" namespace="App\Events">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-        </class>
-        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="15" type="stmt" count="0"/>
-        <metrics loc="16" ncloc="9" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
       </file>
     </package>
     <package name="App\Exceptions">
@@ -140,43 +132,13 @@
         <line num="42" type="stmt" count="0"/>
         <metrics loc="44" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="7" coveredelements="0"/>
       </file>
-      <file name="/home/sostenes/mutants/app/Http/Middleware/ExampleMiddleware.php">
-        <class name="App\Http\Middleware\ExampleMiddleware" namespace="App\Http\Middleware">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-        </class>
-        <line num="16" type="method" name="handle" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="18" type="stmt" count="0"/>
-        <metrics loc="20" ncloc="13" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
-      </file>
     </package>
     <package name="App\Jobs">
-      <file name="/home/sostenes/mutants/app/Jobs/ExampleJob.php">
-        <class name="App\Jobs\ExampleJob" namespace="App\Jobs">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
-        </class>
-        <line num="12" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="15" type="stmt" count="0"/>
-        <line num="22" type="method" name="handle" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <metrics loc="26" ncloc="12" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
-      </file>
       <file name="/home/sostenes/mutants/app/Jobs/Job.php">
         <class name="App\Jobs\Job" namespace="App\Jobs">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="24" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-    </package>
-    <package name="App\Listeners">
-      <file name="/home/sostenes/mutants/app/Listeners/ExampleListener.php">
-        <class name="App\Listeners\ExampleListener" namespace="App\Listeners">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
-        </class>
-        <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="27" type="method" name="handle" visibility="public" complexity="1" crap="2.00" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="16" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
     </package>
     <package name="App\Models">
@@ -224,6 +186,6 @@
         <metrics loc="32" ncloc="22" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="16" loc="561" ncloc="385" classes="10" methods="18" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="89" coveredstatements="71" elements="107" coveredelements="77"/>
+    <metrics files="12" loc="468" ncloc="335" classes="6" methods="12" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="83" coveredstatements="71" elements="95" coveredelements="77"/>
   </project>
 </coverage>
