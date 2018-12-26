@@ -74,7 +74,7 @@ vendor/bin/phpunit
 ## Services
 
 ```
-POST /mutants
+POST /mutant
 
 {
 "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
